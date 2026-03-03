@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Assign Employees to {{ data.project?.name }}</h2>
+<mat-dialog-content>
+  <p>Select employees to assign:</p>
+  <mat-selection-list>
+    <mat-list-option *ngFor="let e of employees" [value]="e.id" (click)="toggle(e.id)" [selected]="selected.includes(e.id)">
+      {{ e.fullName }} ({{ e.email }})
+    </mat-list-option>
+  </mat-selection-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="assign()">Assign</button>
+</mat-dialog-actions>

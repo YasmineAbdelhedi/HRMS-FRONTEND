@@ -1,0 +1,129 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background-color: #f8f9fa;
+
+  .left-side {
+    flex: 1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+      transform: rotate(30deg);
+    }
+
+    .brand-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      }
+
+      p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .right-side {
+    flex: 0 0 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 2;
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+
+      .logo-area {
+        text-align: center;
+        margin-bottom: 2rem;
+        
+        img {
+          height: 50px;
+        }
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .sub-text {
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      .social-btn {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 10px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #f8f9fa;
+          transform: translateY(-1px);
+        }
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        margin: 2rem 0;
+        color: #999;
+        font-size: 0.9rem;
+
+        &::before, &::after {
+          content: '';
+          flex: 1;
+          height: 1px;
+          background-color: #e0e0e0;
+        }
+
+        span {
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    flex-direction: column;
+    
+    .left-side {
+      display: none;
+    }
+
+    .right-side {
+      flex: 1;
+      width: 100%;
+    }
+  }
+}

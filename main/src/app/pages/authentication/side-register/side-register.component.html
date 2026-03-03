@@ -1,0 +1,60 @@
+<div class="blank-layout-container justify-content-center align-items-center bg-light">
+  <div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
+    <div class="col-lg-4 d-flex align-items-center">
+      <mat-card class="cardWithShadow boxed-auth">
+        <mat-card-content class="p-32">
+          <div class="text-center">
+            <a [routerLink]="['/dashboard']">
+              <img
+                src="./assets/images/logos/logo.svg"
+                class="align-middle m-2"
+                alt="logo"
+              />
+            </a>
+          </div>
+
+          <div class="m-t-30">
+            <form [formGroup]="registerForm" (ngSubmit)="submit()">
+              <!-- Full Name -->
+              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Full Name</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput formControlName="fullName" />
+              </mat-form-field>
+
+              <!-- Email -->
+              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput formControlName="email" />
+              </mat-form-field>
+
+              <!-- Password -->
+              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Password</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput type="password" formControlName="password" />
+              </mat-form-field>
+
+              <!-- Roles -->
+              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Roles</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <mat-select formControlName="roles" multiple>
+                  <mat-option value="ADMIN">Admin</mat-option>
+                  <mat-option value="EMPLOYEE">Employee</mat-option>
+                  <mat-option value="HR_MANAGER">HR Manager</mat-option>
+                  <mat-option value="PROJECT_MANAGER">Project Manager</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <!-- Submit Button -->
+              <button mat-flat-button color="primary" class="w-100" type="submit" [disabled]="registerForm.invalid">Register</button>
+            </form>
+          </div>
+
+          <span class="d-block f-w-500 text-center m-t-24">
+            Already have an account?
+            <a [routerLink]="['/authentication/login']" class="text-decoration-none text-primary f-w-500 f-s-14">Login</a>
+          </span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

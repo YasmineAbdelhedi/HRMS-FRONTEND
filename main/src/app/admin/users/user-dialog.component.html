@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{ data?.mode === 'edit' ? 'Edit User' : 'Create User' }}</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Full Name</mat-label>
+    <input matInput formControlName="fullName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field *ngIf="data?.mode !== 'edit'" appearance="fill" class="full-width">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password" />
+  </mat-form-field>
+
+  <mat-label>Roles</mat-label>
+  <div class="roles-row">
+    <mat-chip-listbox>
+      <mat-chip *ngFor="let r of roles" selectable (click)="toggleRole(r)" [color]="(form.value.role || []).includes(r) ? 'primary' : undefined">
+        {{ r }}
+      </mat-chip>
+    </mat-chip-listbox>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
+
+<style>
+.full-width { width: 100%; }
+.roles-row { margin-top: 8px; }
+</style>

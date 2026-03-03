@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>My Projects</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Managed projects</mat-card-subtitle>
+        <h2>{{ managedProjectCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Assignments</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Team members assigned</mat-card-subtitle>
+        <h2>{{ totalAssignments }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Tasks</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Tasks in my projects</mat-card-subtitle>
+        <h2>{{ totalTasks }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Total Budget</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Managed budget</mat-card-subtitle>
+        <h2>{{ totalBudget | number:'1.0-0' }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-12">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Project Overview</mat-card-title>
+        <mat-list>
+          <mat-list-item *ngFor="let project of projects">
+            <span matListItemTitle>{{ project.name }}</span>
+            <span matListItemLine>
+              Tasks: {{ project.taskNames.length || 0 }} | Assignments: {{ project.assignments.length || 0 }}
+            </span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-12">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <mat-card-title>My Projects</mat-card-title>
+            <mat-card-subtitle class="mat-body-1">Projects managed by you</mat-card-subtitle>
+          </div>
+          <button mat-flat-button color="primary" (click)="openCreateProject()">Create Project</button>
+        </div>
+
+        <div class="table-container">
+          <table mat-table [dataSource]="projectDataSource" class="mat-elevation-z8 full-table">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let project">{{ project.name }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef>Description</th>
+              <td mat-cell *matCellDef="let project">{{ project.description }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="budget">
+              <th mat-header-cell *matHeaderCellDef>Budget</th>
+              <td mat-cell *matCellDef="let project">{{ project.budget }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="projectManagerName">
+              <th mat-header-cell *matHeaderCellDef>Manager</th>
+              <td mat-cell *matCellDef="let project">{{ project.projectManagerName || '-' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let project">
+                <button mat-flat-button color="primary" (click)="selectProject(project)">Manage Tasks</button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="projectColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: projectColumns"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-12" *ngIf="selectedProject">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Tasks - {{ selectedProject.name }}</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Create, update status, or delete tasks</mat-card-subtitle>
+
+        <div class="row mb-3">
+          <div class="col-lg-4 col-sm-6">
+            <mat-form-field appearance="outline" class="w-100" [formGroup]="projectAssignmentForm">
+              <mat-label>Assign Employee to Project</mat-label>
+              <mat-select formControlName="employeeId">
+                <mat-option *ngFor="let employee of employees" [value]="employee.id">{{ employee.fullName }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-2 col-sm-6 d-flex align-items-center">
+            <button mat-flat-button color="accent" (click)="assignEmployeeToProject()" [disabled]="projectAssignmentForm.invalid">
+              Assign
+            </button>
+          </div>
+          <div class="col-12">
+            <div class="mat-body-1"><strong>Assigned Employees</strong></div>
+            <div class="mat-body-2" *ngIf="!selectedProjectAssignments.length">No employees assigned yet.</div>
+            <ul class="mb-0" *ngIf="selectedProjectAssignments.length">
+              <li *ngFor="let assignment of selectedProjectAssignments">
+                {{ assignment.fullName || ('User #' + assignment.userId) }} ({{ assignment.role }})
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <form [formGroup]="taskForm" class="row">
+          <div class="col-lg-3 col-sm-6">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Assign Employee</mat-label>
+              <mat-select formControlName="employeeId">
+                <mat-option *ngFor="let employee of employees" [value]="employee.id">{{ employee.fullName }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Task Name</mat-label>
+              <input matInput formControlName="name" />
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="description" />
+            </mat-form-field>
+          </div>
+          <div class="col-lg-2 col-sm-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Due Date</mat-label>
+              <input matInput type="date" formControlName="dueDate" />
+            </mat-form-field>
+          </div>
+          <div class="col-lg-1 col-sm-2 d-flex align-items-center">
+            <button mat-flat-button color="primary" (click)="createTask()" [disabled]="taskForm.invalid">Create</button>
+          </div>
+        </form>
+
+        <div class="table-container">
+          <table mat-table [dataSource]="taskDataSource" class="mat-elevation-z8 full-table">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Task</th>
+              <td mat-cell *matCellDef="let task">{{ task.name }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef>Description</th>
+              <td mat-cell *matCellDef="let task">{{ task.description }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="dueDate">
+              <th mat-header-cell *matHeaderCellDef>Due Date</th>
+              <td mat-cell *matCellDef="let task">{{ task.dueDate }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let task">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-select [value]="task.status" (selectionChange)="updateTaskStatus(task, $event.value)">
+                    <mat-option *ngFor="let status of statuses" [value]="status">{{ status }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let task">
+                <button mat-icon-button color="warn" (click)="deleteTask(task)"><mat-icon>delete</mat-icon></button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="taskColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: taskColumns"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

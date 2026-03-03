@@ -1,0 +1,12 @@
+<div class="kanban">
+  <div class="column" *ngFor="let col of columns" cdkDropList [cdkDropListData]="col.tasks" (cdkDropListDropped)="drop($event, col)">
+    <h3>{{ col.title }}</h3>
+    <div class="task" *ngFor="let t of col.tasks" cdkDrag>
+      <mat-card>
+        <mat-card-title>{{ t.name }}</mat-card-title>
+        <mat-card-content>{{ t.description }}</mat-card-content>
+        <mat-card-subtitle>Due: {{ t.dueDate | date:'shortDate' }}</mat-card-subtitle>
+      </mat-card>
+    </div>
+  </div>
+</div>

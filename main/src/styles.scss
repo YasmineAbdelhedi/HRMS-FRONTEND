@@ -1,0 +1,434 @@
+/* ============================================================ */
+/* Global Styles - Premium HRMS Admin Design */
+/* ============================================================ */
+
+/* ============================================================ */
+/* Base Styles */
+/* ============================================================ */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', 'Roboto', "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #f5f7fa;
+}
+
+/* ============================================================ */
+/* Design Tokens */
+/* ============================================================ */
+:root {
+    /* Colors */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --info-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+    /* Shadows */
+    --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+    --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.20);
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-bounce: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================ */
+/* Typography */
+/* ============================================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+/* ============================================================ */
+/* Utility Classes */
+/* ============================================================ */
+.d-flex {
+    display: flex !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.d-inline-block {
+    display: inline-block !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.flex-column {
+    flex-direction: column !important;
+}
+
+.flex-row {
+    flex-direction: row !important;
+}
+
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.align-items-start {
+    align-items: flex-start !important;
+}
+
+.align-items-end {
+    align-items: flex-end !important;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.justify-content-around {
+    justify-content: space-around !important;
+}
+
+.justify-content-start {
+    justify-content: flex-start !important;
+}
+
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+
+.gap-1 {
+    gap: var(--spacing-xs) !important;
+}
+
+.gap-2 {
+    gap: var(--spacing-sm) !important;
+}
+
+.gap-3 {
+    gap: var(--spacing-md) !important;
+}
+
+.gap-4 {
+    gap: var(--spacing-lg) !important;
+}
+
+.gap-5 {
+    gap: var(--spacing-xl) !important;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.m-1 {
+    margin: var(--spacing-xs) !important;
+}
+
+.m-2 {
+    margin: var(--spacing-sm) !important;
+}
+
+.m-3 {
+    margin: var(--spacing-md) !important;
+}
+
+.m-4 {
+    margin: var(--spacing-lg) !important;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.p-1 {
+    padding: var(--spacing-xs) !important;
+}
+
+.p-2 {
+    padding: var(--spacing-sm) !important;
+}
+
+.p-3 {
+    padding: var(--spacing-md) !important;
+}
+
+.p-4 {
+    padding: var(--spacing-lg) !important;
+}
+
+.p-20 {
+    padding: 20px !important;
+}
+
+.p-x-12 {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+}
+
+.m-t-12 {
+    margin-top: 12px !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.object-cover {
+    object-fit: cover !important;
+}
+
+.position-relative {
+    position: relative !important;
+}
+
+.position-absolute {
+    position: absolute !important;
+}
+
+.icon-20 {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.icon-22 {
+    width: 22px !important;
+    height: 22px !important;
+}
+
+.icon-35 {
+    width: 35px !important;
+    height: 35px !important;
+}
+
+.icon-40 {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+/* ============================================================ */
+/* Material Design Overrides */
+/* ============================================================ */
+.mat-mdc-card {
+    &.cardWithShadow {
+        box-shadow: var(--shadow-md) !important;
+        border-radius: var(--radius-lg) !important;
+        transition: all var(--transition-bounce);
+
+        &:hover {
+            box-shadow: var(--shadow-lg) !important;
+        }
+    }
+}
+
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button {
+    border-radius: var(--radius-md) !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    letter-spacing: 0.3px !important;
+    transition: all var(--transition-base) !important;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.mat-mdc-icon-button {
+    transition: all var(--transition-base) !important;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+/* ============================================================ */
+/* Scrollbar Styling */
+/* ============================================================ */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f3f5;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    transition: background var(--transition-base);
+
+    &:hover {
+        background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
+    }
+}
+
+/* ============================================================ */
+/* Animations */
+/* ============================================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ============================================================ */
+/* Responsive Utilities */
+/* ============================================================ */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    h5 {
+        font-size: 1.1rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================================ */
+/* Focus States */
+/* ============================================================ */
+*:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* ============================================================ */
+/* Selection */
+/* ============================================================ */
+::selection {
+    background: rgba(102, 126, 234, 0.3);
+    color: #2d3748;
+}

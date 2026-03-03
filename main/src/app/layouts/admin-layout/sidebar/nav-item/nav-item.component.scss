@@ -1,0 +1,53 @@
+.menu-list-item {
+    border-radius: 8px;
+    margin: 4px 16px;
+    padding: 10px 16px;
+    transition: all 0.3s ease;
+    color: #5a6a85;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    &:hover {
+        background-color: rgba(93, 135, 255, 0.1);
+        color: #5d87ff;
+    }
+
+    &.activeMenu {
+        background-color: #5d87ff;
+        color: white;
+        box-shadow: 0 4px 8px rgba(93, 135, 255, 0.4);
+
+        .routeIcon {
+            color: white;
+        }
+    }
+
+    .routeIcon {
+        margin-right: 12px;
+        font-size: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .hide-menu {
+        font-size: 14px;
+    }
+}
+
+.nav-caption {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #2a3547;
+    margin: 24px 16px 8px;
+    padding-left: 8px;
+    letter-spacing: 1px;
+}
+
+.sidebar-divider {
+    display: block;
+    height: 1px;
+    background-color: #e5eaef;
+    margin: 16px 24px;
+}

@@ -1,0 +1,38 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    padding-bottom: 24px;
+}
+
+.cardWithShadow {
+    box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    mat-card-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #2a3547;
+        margin-bottom: 8px;
+    }
+
+    mat-card-subtitle {
+        font-size: 14px;
+        color: #5a6a85;
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-size: 36px;
+        font-weight: 700;
+        color: #5d87ff;
+        margin: 0;
+    }
+}

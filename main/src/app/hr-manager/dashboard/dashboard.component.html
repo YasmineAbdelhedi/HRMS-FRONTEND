@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Employees</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Total users</mat-card-subtitle>
+        <h2>{{ userCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Profiles</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Employee profiles</mat-card-subtitle>
+        <h2>{{ profileCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Payrolls</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Payroll records</mat-card-subtitle>
+        <h2>{{ payrollCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Attendance</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Attendance entries</mat-card-subtitle>
+        <h2>{{ attendanceCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-12">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Pending Leave Requests</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Needs action: {{ pendingLeaveCount }}</mat-card-subtitle>
+        <mat-list>
+          <mat-list-item *ngFor="let leave of recentPendingLeaves">
+            <span matListItemTitle>{{ leave.employee.fullName }} - {{ leave.leaveType }}</span>
+            <span matListItemLine>{{ leave.startDate }} to {{ leave.endDate }}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

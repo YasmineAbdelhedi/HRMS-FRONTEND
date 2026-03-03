@@ -1,0 +1,47 @@
+.topbar {
+    background-color: #ffffff;
+    color: #2a3547;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    padding: 0 16px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 998;
+    position: relative;
+
+    h1 {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+        color: #5d87ff;
+        letter-spacing: 0.5px;
+    }
+
+    .mat-mdc-button-base {
+        margin: 0 4px;
+    }
+
+    .profile-btn-dd {
+        padding: 0;
+        min-width: 40px;
+    }
+
+    .profile-dd {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.topbar-dd {
+    .mat-mdc-menu-item {
+        min-height: 48px;
+
+        .iconify {
+            margin-right: 12px;
+            color: #5d87ff;
+        }
+    }
+}

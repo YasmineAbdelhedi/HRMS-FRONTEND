@@ -1,0 +1,70 @@
+<div class="dashboard-grid">
+  <mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Users</mat-card-title>
+      <mat-card-subtitle class="mat-body-1">Total users</mat-card-subtitle>
+      <h2>{{ userCount }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Projects</mat-card-title>
+      <mat-card-subtitle class="mat-body-1">Total projects</mat-card-subtitle>
+      <h2>{{ projectCount }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Leave Requests</mat-card-title>
+      <mat-card-subtitle class="mat-body-1">Total leave requests</mat-card-subtitle>
+      <h2>{{ leaveRequestCount }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Tasks</mat-card-title>
+      <mat-card-subtitle class="mat-body-1">Total tasks</mat-card-subtitle>
+      <h2>{{ taskCount }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Pending Leaves</mat-card-title>
+      <mat-card-subtitle class="mat-body-1">Requests waiting approval</mat-card-subtitle>
+      <h2>{{ pendingLeaveCount }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Approved Leaves</mat-card-title>
+      <mat-card-subtitle class="mat-body-1">Total approved</mat-card-subtitle>
+      <h2>{{ approvedLeaveCount }}</h2>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Rejected Leaves</mat-card-title>
+      <mat-card-subtitle class="mat-body-1">Total rejected</mat-card-subtitle>
+      <h2>{{ rejectedLeaveCount }}</h2>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <mat-card-title>Recent Leave Requests</mat-card-title>
+    <mat-list>
+      <mat-list-item *ngFor="let leave of recentLeaves">
+        <span matListItemTitle>{{ leave.employee.fullName }} - {{ leave.leaveType }}</span>
+        <span matListItemLine>{{ leave.startDate }} to {{ leave.endDate }} | {{ leave.status }}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+  

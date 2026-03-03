@@ -1,0 +1,6 @@
+/* Employee tasks styles */
+.cardWithShadow { padding: 16px }
+
+.kanban { display:flex; gap:16px }
+.column { flex:1; background:#f7f7f7; padding:8px; border-radius:4px }
+.task { margin-bottom:8px }

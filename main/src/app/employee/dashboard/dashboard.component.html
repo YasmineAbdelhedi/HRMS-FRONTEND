@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>My Tasks</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">All assigned tasks</mat-card-subtitle>
+        <h2>{{ myTaskCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>In Progress</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Active tasks</mat-card-subtitle>
+        <h2>{{ inProgressTaskCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Completed</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Finished tasks</mat-card-subtitle>
+        <h2>{{ completedTaskCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Pending</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Waiting to start</mat-card-subtitle>
+        <h2>{{ pendingTaskCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-4 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>My Projects</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Projects assigned to me</mat-card-subtitle>
+        <h2>{{ myProjectCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-4 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>My Leave Requests</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">Total leave requests</mat-card-subtitle>
+        <h2>{{ myLeaveCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-4 col-sm-6">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Attendance (Month)</mat-card-title>
+        <mat-card-subtitle class="mat-body-1">This month check-ins</mat-card-subtitle>
+        <h2>{{ monthlyAttendanceCount }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-12">
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <mat-card-title>Upcoming Tasks</mat-card-title>
+        <mat-list>
+          <mat-list-item *ngFor="let task of upcomingTasks">
+            <span matListItemTitle>{{ task.name }}</span>
+            <span matListItemLine>{{ task.dueDate }} | {{ task.status }}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
